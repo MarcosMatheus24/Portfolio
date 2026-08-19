@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seu Nome — Portfólio</title>
+  <title>Portfólio</title>
   <!-- Google Font: Inter -->
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -33,21 +34,22 @@
       font-family: var(--font);
       line-height: 1.6;
       padding: 3rem 1.5rem;
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
       background-repeat: no-repeat;
     }
 
     .container {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
     }
 
+    /* Header com Grid */
     header {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 1.5rem;
+      gap: 2rem;
       align-items: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
     }
 
     .hero-text {
@@ -56,7 +58,7 @@
     }
 
     h1 {
-      font-size: 2.75rem;
+      font-size: 2.8rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.1;
@@ -89,14 +91,16 @@
       50% { opacity: 0; }
     }
 
+    /* Foto de Perfil */
     .avatar-wrapper {
       position: relative;
-      width: 110px;
-      height: 110px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      padding: 3px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.02));
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      padding: 4px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.03));
+      box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.6);
+      flex-shrink: 0;
     }
 
     .avatar-img {
@@ -104,6 +108,7 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
+      object-position: center 20%;
       background-color: var(--surface);
       display: block;
     }
@@ -130,17 +135,42 @@
       box-shadow: 0 0 8px var(--accent);
     }
 
+    /* Banner de Destaque Temático (Hero Tech Image) */
+    .tech-banner {
+      width: 100%;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 3.5rem;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .tech-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) contrast(1.1);
+      display: block;
+    }
+
+    .tech-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 14, 17, 0.85), transparent);
+    }
+
     section {
       margin-bottom: 3.5rem;
     }
 
     h2 {
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -153,23 +183,50 @@
       background: var(--border);
     }
 
+    /* Cards de Projeto */
     .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      transition: all 0.25s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+      transition: all 0.3s ease;
       text-decoration: none;
-      display: block;
+      display: flex;
+      flex-direction: column;
       color: inherit;
     }
 
     .project-card:hover {
       background: var(--surface-hover);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-preview {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background-color: #000;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-preview img {
+      transform: scale(1.03);
+      opacity: 1;
+    }
+
+    .project-content {
+      padding: 1.5rem;
     }
 
     .project-header {
@@ -180,8 +237,8 @@
     }
 
     .project-title {
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.2rem;
+      font-weight: 700;
       color: #fff;
     }
 
@@ -197,7 +254,7 @@
 
     .project-desc {
       color: var(--text-muted);
-      font-size: 0.925rem;
+      font-size: 0.95rem;
       margin-bottom: 1.25rem;
       line-height: 1.5;
     }
@@ -213,15 +270,69 @@
       font-weight: 500;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
-      padding: 0.25rem 0.6rem;
+      padding: 0.25rem 0.65rem;
       border-radius: 6px;
       color: var(--text-muted);
     }
 
-    /* Links de Contato com Ícones */
+    /* Seção de Formação Acadêmica */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      transition: border-color 0.25s ease;
+    }
+
+    .edu-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .edu-info {
+      flex: 1;
+    }
+
+    .edu-semester {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-course {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-institution {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .edu-img {
+      width: 75px;
+      height: 75px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+      background-color: var(--bg);
+    }
+
+    /* Links de Contato & Email Solto (Estático) */
     .contact-links {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 1rem;
     }
 
@@ -257,29 +368,49 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 580px) {
+    /* Elemento de Email Estático Solto */
+    .email-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      font-size: 0.95rem;
+      padding: 0.65rem 1.25rem;
+      background: transparent;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      user-select: all;
+    }
+
+    .email-display svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--text-muted);
+    }
+
+    @media (max-width: 600px) {
       header {
         grid-template-columns: 1fr;
         text-align: left;
       }
       .avatar-wrapper {
         order: -1;
-        width: 90px;
-        height: 90px;
+        width: 110px;
+        height: 110px;
       }
       h1 {
         font-size: 2.2rem;
       }
+      .edu-card {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+      .edu-img {
+        width: 100%;
+        height: 120px;
+      }
     }
-    .avatar-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  /* Garante o foco do enquadramento no topo/centro (rosto) */
-  object-position: center 20%; 
-  display: block;
-}
   </style>
 </head>
 <body>
@@ -287,7 +418,7 @@
   <div class="container">
     <header>
       <div class="hero-text">
-        <h1>Seu Nome</h1>
+        <h1>MARCOS MATHEUS RIBEIRO MUNIZ</h1>
         <p class="subtitle">
           Especialista em <span class="typed-text" id="typed"></span><span class="cursor">&nbsp;</span>
         </p>
@@ -296,79 +427,84 @@
         </div>
       </div>
 
-    <div class="avatar-wrapper">
-        <img class="avatar-img" src="avatar-img.jpeg" alt="Foto de Perfil">
-    </div>
+      <!-- Foto de Perfil -->
+      <div class="avatar-wrapper">
+        <img class="avatar-img" src="minhafoto.jpeg" alt="Foto de Perfil">
+      </div>
     </header>
-
     <section id="sobre">
-      <h2>Sobre</h2>
+      <h2>Sobre Mim</h2>
       <p style="color: var(--text-muted); font-size: 1rem;">
         Desenvolvo aplicações digitais focadas em performance, arquitetura escalável e experiência do usuário. Tenho preferência por código limpo, soluções diretas e interfaces funcionais.
       </p>
     </section>
 
+    <!-- Formação Acadêmica -->
+    <section id="formacao">
+      <h2>Formação Acadêmica</h2>
+
+      <div class="edu-card">
+        <div class="edu-info">
+          <div class="edu-semester">3º Semestre</div>
+          <div class="edu-course">Curso Técnico</div>
+          <div class="edu-institution">SENAI CIMATEC</div>
+        </div>
+        <img class="edu-img" src="senai.png" alt="SENAI CIMATEC Campus">
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-info">
+          <div class="edu-semester">2º Semestre</div>
+          <div class="edu-course">Curso Superior</div>
+          <div class="edu-institution">Universidade Jorge Amado (Unijorge)</div>
+        </div>
+        <img class="edu-img" src="UJpfp.png" alt="Universidade Jorge Amado Campus">
+      </div>
+    </section>
+
+    <!-- Projetos com Destaque -->
     <section id="projetos">
       <h2>Projetos Selecionados</h2>
 
-      <a href="https://github.com" target="_blank" class="project-card">
-        <div class="project-header">
-          <span class="project-title">Gerenciador de Tarefas Realtime</span>
-          <span class="project-arrow">↗</span>
-        </div>
-        <p class="project-desc">Aplicação para gestão de projetos em tempo real com WebSockets, suporte a múltiplos usuários e autenticação robusta.</p>
-        <div class="tags">
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">Socket.io</span>
-          <span class="tag">PostgreSQL</span>
-        </div>
-      </a>
-
-      <a href="https://github.com" target="_blank" class="project-card">
-        <div class="project-header">
-          <span class="project-title">API REST para E-commerce</span>
-          <span class="project-arrow">↗</span>
-        </div>
-        <p class="project-desc">Microserviço responsável por processamento de pagamentos, integração com Gateway e controle de estoque com baixa latência.</p>
-        <div class="tags">
-          <span class="tag">TypeScript</span>
-          <span class="tag">Express</span>
-          <span class="tag">Redis</span>
-          <span class="tag">Docker</span>
+      <a href="https://github.com/MarcosMatheus24/SistemaRH" target="_blank" class="project-card">
+        <div class="project-content">
+          <div class="project-header">
+            <span class="project-title">Sistema RH</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <p class="project-desc">Aplicação para gestão de projetos em tempo real com WebSockets, suporte a múltiplos usuários e autenticação robusta.</p>
+          <div class="tags">
+            <span class="tag">JAVA</span>
+            <span class="tag">SQL</span>
+            <span class="tag">JDBC</span>
+          </div>
         </div>
       </a>
-    </section>
-
-    <!-- Footer / Seção de Redes Sociais Profissionais -->
+    <!-- Redes Sociais & Contato -->
     <section id="contato">
       <h2>Redes Sociais & Contato</h2>
       <div class="contact-links">
-        
-        <!-- GitHub Link com Ícone -->
-        <a href="https://github.com/seudominio" target="_blank" class="contact-button">
+        <a href="https://github.com/MarcosMatheus24" target="_blank" class="contact-button">
           <svg viewBox="0 0 24 24">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
           </svg>
           GitHub
         </a>
 
-        <!-- LinkedIn Link com Ícone -->
-        <a href="https://linkedin.com/in/seudominio" target="_blank" class="contact-button">
+        <a href="https://www.linkedin.com/in/marcos-matheus-ribeiro-muniz-1aba31326/" target="_blank" class="contact-button">
           <svg viewBox="0 0 24 24">
             <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.54a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/>
           </svg>
           LinkedIn
         </a>
 
-        <!-- Email Direct Link com Ícone -->
-        <a href="mailto:seuemail@exemplo.com" class="contact-button">
+        <!-- E-mail Apenas em Texto Solto (Sem Link / Não Clicável) -->
+        <div class="email-display">
           <svg viewBox="0 0 24 24">
             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
           </svg>
-          E-mail
-        </a>
-
+          marc.matheus24@gmail.com
+        </div>
       </div>
     </section>
   </div>
